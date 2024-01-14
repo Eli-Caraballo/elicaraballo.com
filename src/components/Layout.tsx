@@ -10,9 +10,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				</div>
 			</div>
 
-			<div className="relative flex flex-col">
+			<div className="min-h-screen relative flex flex-col">
 				<Header />
-				<main>{children}</main>
+				<main className="grow basis-0">{children}</main>
 				<Footer />
 			</div>
 		</>
