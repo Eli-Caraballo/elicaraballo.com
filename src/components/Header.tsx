@@ -27,7 +27,7 @@ function ThemeToggle() {
 
 function Avatar() {
 	return (
-		<div className="h-12 w-12 rounded-full bg-amber-500/60 p-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 sm:hidden dark:bg-zinc-800/90 dark:ring-white/10">
+		<div className="h-12 w-12 rounded-full bg-amber-500/50 p-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 sm:hidden dark:bg-zinc-800/90 dark:ring-white/10">
 			<Image src={avatarImage} alt="Avatar Image" className="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800" />
 		</div>
 	)
