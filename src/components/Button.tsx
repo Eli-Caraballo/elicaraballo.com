@@ -8,12 +8,10 @@ const variantStyles = {
 		'bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70',
 }
 
-type ButtonProps = {
-	variant?: keyof typeof variantStyles
-} & (
-		| (React.ComponentPropsWithoutRef<'button'> & { href?: undefined })
-		| React.ComponentPropsWithoutRef<typeof Link>
-	)
+type ButtonProps = { variant?: keyof typeof variantStyles } & (
+	| (React.ComponentProps<'button'> & { href?: undefined })
+	| React.ComponentProps<typeof Link>
+)
 
 export function Button({
 	variant = 'primary',
