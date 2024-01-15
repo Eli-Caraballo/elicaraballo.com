@@ -14,14 +14,20 @@ import logoCornerstone from '@/images/logos/Cornerstone.jpg'
 import logoCreativeArtsAcademy from '@/images/logos/CreativeArtsAcademy.jpg'
 import logoDish from '@/images/logos/DishOutdoors.svg'
 import logoPace from '@/images/logos/Pace.jpg'
+import logoPacePng from '@/images/logos/Pace.png'
+import logoPacePngWhite from '@/images/logos/PaceWhite.png'
 import logoTelrite from '@/images/logos/Telrite.jpg'
 import logoTimelessEntertainment from '@/images/logos/TimelessEntertainment.png'
+import logoTimelessEntertainmentWhite from '@/images/logos/TimelessEntertainmentWhite.png'
 import logoTravlFi from '@/images/logos/TravlFi.svg'
+import clsx from 'clsx'
+import avatarImage from '@/images/avatar.jpg'
+
 
 function SocialLink({ icon: Icon, ...props }: React.ComponentProps<typeof Link> & { icon: React.ComponentType<{ className?: string }> }) {
 	return (
 		<Link className="group -mx-1 -px-1 px-1 py-1" {...props}>
-			<Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+			<Icon className="h-6 w-6 fill-amber-500 transition group-hover:fill-amber-600 dark:fill-zinc-300 dark:group-hover:fill-zinc-100" />
 		</Link>
 	)
 }
@@ -32,7 +38,7 @@ function Photos() {
 			<div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
 				{[image1, image2, image3, image4, image5].map((image) => (
 					<div key={image.src} className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl transition-all duration-200 odd:rotate-2 even:-rotate-2 hover:odd:-rotate-2 hover:even:rotate-2 hover:scale-105">
-						<Image src={image} alt="" sizes="(min-width: 640px) 18rem, 11rem" className="absolute inset-0 h-full w-full object-cover" />
+						<Image src={image} alt="" className="absolute inset-0 h-full w-full object-cover" />
 					</div>
 				))}
 			</div>
@@ -42,27 +48,17 @@ function Photos() {
 
 function EmailMe() {
 	return (
-		<form className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+		<form className="rounded-2xl px-6 py-6 border border-zinc-200/70 shadow shadow-zinc-800/5 dark:border-zinc-700/40">
 			<h3 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
 				<MailIcon className="h-6 w-6 flex-none" />
 				<span className="ml-3">Get in touch</span>
 			</h3>
 
-			<p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-				REWRITE THIS TEXT Get notified when I publish something new, and unsubscribe at any time.
+			<p className="text-pretty mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+				Be sure to reach out and connect! Whether you have a question, collaboration idea, or just want to say hello, I'd love to hear from you.
 			</p>
 
-			<div className="mt-6 flex">
-				<input
-					type="email"
-					placeholder="Email address"
-					aria-label="Email address"
-					required
-					className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10 sm:text-sm"
-				/>
-
-				<Button type="submit" className="ml-4 flex-none">Email</Button>
-			</div>
+			<Button href="mailto:eli.caraballojr@gmail.com" className="mt-6 flex-none w-full">Shoot Me an Email</Button>
 		</form>
 	)
 }
@@ -78,8 +74,8 @@ interface Role {
 function Role({ role }: { role: Role }) {
 	return (
 		<li className="flex gap-x-4">
-			<div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 bg-zinc-50/50 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-				<Image src={role.logo} alt="" className="rounded-full h-7 w-7 ring-1 ring-zinc-900/5" unoptimized />
+			<div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+				<Image src={role.logo} alt="" className="rounded-full h-7 w-7" unoptimized />
 			</div>
 
 			<dl className="flex flex-auto flex-wrap gap-x-2">
@@ -124,7 +120,7 @@ function Resume() {
 	}]
 
 	return (
-		<div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+		<div className="rounded-2xl px-6 py-6 shadow shadow-zinc-800/5 border border-zinc-200/70 dark:border-zinc-700/40">
 			<h3 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
 				<BriefcaseIcon className="h-6 w-6 flex-none" />
 				<span className="ml-3">Work</span>
@@ -143,11 +139,21 @@ function Resume() {
 }
 
 function Projects() {
-	const projects = [{
+	const projects: Array<{
+		name: string
+		description: string
+		link: {
+			href: string
+			label: string
+		}
+		logo: ImageProps['src']
+		darkLogo?: ImageProps['src']
+	}> = [{
 		name: 'Pace International',
 		description: 'Creating technology to empower civilians to explore space on their own terms.',
 		link: { href: 'https://www.paceintl.com/', label: 'paceintl.com' },
-		logo: logoPace,
+		logo: logoPacePng,
+		darkLogo: logoPacePngWhite,
 	}, {
 		name: 'TravlFi',
 		description: 'High performance web animation library, hand-written in optimized WASM.',
@@ -163,23 +169,25 @@ function Projects() {
 		description: 'The schematics for the first rocket I designed that successfully made it to orbit.',
 		link: { href: 'https://timelessentertainmentnetwork.com/', label: 'timelessentertainmentnetwork.com' },
 		logo: logoTimelessEntertainment,
+		darkLogo: logoTimelessEntertainmentWhite,
 	}]
 
 	return (
-		<>
+		<div className="lg:mt-px lg:pt-6">
 			<h3 className="flex gap-x-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
 				<ToolsIcon className="h-6 w-6 flex-none" />
 				<span>Projects</span>
 			</h3>
 
-			<ul role="list" className="space-y-12">
+			<ul role="list" className="space-y-14 mt-12">
 				{projects.map((project) => (
 					<li key={project.name} className="group relative flex flex-col items-start">
 						<Link href={project.link.href}>
-							<div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl" />
+							<div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-100/50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl" />
 
 							<div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-								<Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
+								<Image src={project.logo} alt="" className={clsx("h-8 w-8", project.darkLogo && 'dark:hidden')} unoptimized />
+								{project.darkLogo && (<Image src={project.darkLogo} alt="" className={clsx("h-8 w-8 hidden", project.darkLogo && 'dark:block')} unoptimized />)}
 							</div>
 
 							<h3 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
@@ -188,7 +196,7 @@ function Projects() {
 
 							<p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">{project.description}</p>
 
-							<p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+							<p className="relative z-10 mt-6 flex text-sm font-medium text-amber-500 transition group-hover:underline dark:text-zinc-300 dark:group-hover:text-zinc-50">
 								<LinkIcon className="h-6 w-6 flex-none" />
 								<span className="ml-2">{project.link.label}</span>
 							</p>
@@ -196,25 +204,38 @@ function Projects() {
 					</li>
 				))}
 			</ul>
-		</>
+		</div>
+	)
+}
+
+function Avatar() {
+	return (
+		<div className="hidden h-14 w-14 rounded-full bg-amber-500/50 px-0.5 py-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 sm:block lg:h-16 lg:w-16 dark:bg-zinc-800/90 dark:ring-white/10">
+			<Image src={avatarImage} alt="Avatar Image" className="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800" />
+		</div>
 	)
 }
 
 export default async function Home() {
 	return (
 		<>
-			<Container className="mt-8 md:mt-12">
-				<div className="max-w-2xl">
-					<h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">Eliezer Caraballo Jr.</h1>
-					<h2 className="text-lg font-light tracking-tight italic text-zinc-600 dark:text-zinc-400">- Software Developer, Musician, and something else</h2>
+			<Container className="mt-8 sm:mt-12 lg:mt-16">
+				<Avatar />
+
+				<div className="max-w-3xl sm:mt-7 lg:mt-8">
+					<h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl lg:text-6xl">Eliezer Caraballo Jr.</h1>
+					<h2 className="mt-1 font-light text-pretty tracking-tight italic text-zinc-600 sm:mt-0.5 sm:text-lg lg:text-xl dark:text-zinc-400">
+						<span className="hidden sm:inline">- </span>
+						Software Developer, Musician, Gamer, Dad. That sums it up pretty well.
+					</h2>
 
 					<p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-						REWRITE THIS TEXT I'm Eliezer, but I just go by Eli. a software designer and entrepreneur based just outside of Atlanta Georgia. sjdfiojasdijfiasdof asjidfjasio jfias dfjias dfjasi fjasiodjfioajdfoas jfiojsdf asjdfjiosdfaldjfia djsia fjiodf jlasjfioasdjf jas.
+						I'm Eliezer, but I just go by Eli, an expirienced full-stack developer based outside of Atlanta Georgia. I served as a worship pastor and guitar instructor for many years before catching a passion for programming. Let's chat tech, tunes, and anything in between! <span className="inline-block">🚀 🎮 🎸</span>
 					</p>
 
 					<div className="mt-6 flex gap-6">
-						<SocialLink href="https://github.com" aria-label="Follow on GitHub" icon={GitHubIcon} />
-						<SocialLink href="https://linkedin.com" aria-label="Follow on LinkedIn" icon={LinkedInIcon} />
+						<SocialLink href="https://github.com/Eli-Caraballo" aria-label="Follow on GitHub" icon={GitHubIcon} />
+						<SocialLink href="https://www.linkedin.com/in/eliezer-caraballo/" aria-label="Follow on LinkedIn" icon={LinkedInIcon} />
 					</div>
 				</div>
 			</Container>
@@ -223,11 +244,9 @@ export default async function Home() {
 
 			<Container className="mt-24 md:mt-28">
 				<div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-					<div className="flex flex-col gap-16">
-						<Projects />
-					</div>
+					<Projects />
 
-					<div className="space-y-10 lg:pl-16 xl:pl-24">
+					<div className="flex flex-col gap-y-10 lg:pl-16 xl:pl-24">
 						<EmailMe />
 						<Resume />
 					</div>
