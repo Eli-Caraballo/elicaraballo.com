@@ -25,7 +25,7 @@ import image5 from '@/images/photos/image-5.jpg'
 
 function SocialLink({ icon: Icon, ...props }: React.ComponentProps<typeof Link> & { icon: React.ComponentType<{ className?: string }> }) {
 	return (
-		<Link className="group -mx-1 p-1" {...props}>
+		<Link className="group -mx-1 p-1" target="_blank" rel="noopener noreferrer" {...props}>
 			<Icon className="h-6 w-6 fill-amber-500 transition group-hover:fill-amber-600 dark:fill-zinc-300 dark:group-hover:fill-zinc-100" />
 		</Link>
 	)
@@ -149,23 +149,23 @@ function Projects() {
 		darkLogo?: ImageProps['src']
 	}> = [{
 		name: 'Pace International',
-		description: 'Creating technology to empower civilians to explore space on their own terms.',
+		description: 'Nationwide distributor managing a wide range of products, installations, and value adds for some of the most-recognized companies in the world.',
 		link: { href: 'https://www.paceintl.com/', label: 'paceintl.com' },
 		logo: logoPacePng,
 		darkLogo: logoPacePngWhite,
 	}, {
 		name: 'TravlFi',
-		description: 'High performance web animation library, hand-written in optimized WASM.',
+		description: 'A subscription-based Wi-Fi service provider to keep travelers connected all throughout the United States, Canada, and Mexico.',
 		link: { href: 'https://travlfi.com/', label: 'travlfi.com' },
 		logo: logoTravlFi,
 	}, {
 		name: 'DISH Outdoors',
-		description: 'The schematics for the first rocket I designed that successfully made it to orbit.',
+		description: 'Providing satellite TV for RVs, tailgating, camping, and more.',
 		link: { href: 'https://dishoutdoors.com/', label: 'dishoutdoors.com' },
 		logo: logoDish,
 	}, {
 		name: 'Timeless Entertainment Network',
-		description: 'The schematics for the first rocket I designed that successfully made it to orbit.',
+		description: 'Entertainment and connectivity solutions for senior living communities.',
 		link: { href: 'https://timelessentertainmentnetwork.com/', label: 'timelessentertainmentnetwork.com' },
 		logo: logoTimelessEntertainment,
 		darkLogo: logoTimelessEntertainmentWhite,
@@ -229,7 +229,7 @@ export default async function Home() {
 					</h2>
 
 					<p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-						I'm Eliezer, but I just go by Eli, an expirienced full-stack developer based outside of Atlanta Georgia. I served as a worship pastor and guitar instructor for many years before catching a passion for programming. Let's chat tech, tunes, and anything in between! <span className="inline-block">🚀 🎮 🎸</span>
+						I'm Eliezer, but I just go by Eli, an experienced full-stack developer based outside of Atlanta, Georgia. I served as a worship pastor and guitar instructor for many years before catching a passion for programming. Let's chat tech, tunes, and anything in between! <span className="inline-block">🚀 🎮 🎸</span>
 					</p>
 
 					<div className="mt-6 flex gap-6">
