@@ -6,21 +6,13 @@ import { Layout } from '@/components/Layout'
 import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
-	title: {
-		template: '%s - Spencer Sharp',
-		default: 'Eliezer Caraballo Jr. - Software Developer',
-	},
-	description: 'I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.',
-	alternates: {
-		types: {
-			'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
-		},
-	},
+	title: 'Eliezer Caraballo Jr. - Software Developer',
+	description: 'I\'m Eliezer, but I just go by Eli, an expirienced full-stack developer based outside of Atlanta Georgia. I served as a worship pastor and guitar instructor for many years before catching a passion for programming. Let\'s chat tech, tunes, and anything in between!',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" className="h-full antialiased" suppressHydrationWarning>
+		<html lang="en" className="antialiased" suppressHydrationWarning>
 			<body className="h-full bg-zinc-50 dark:bg-black">
 				<Providers>
 					<Layout>{children}</Layout>
