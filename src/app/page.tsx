@@ -210,7 +210,7 @@ function Projects() {
 
 function Avatar() {
 	return (
-		<div className="hidden h-14 w-14 rounded-full bg-amber-500/50 px-0.5 py-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 sm:block lg:h-16 lg:w-16 dark:bg-zinc-800/90 dark:ring-white/10">
+		<div className="hidden h-14 w-14 rounded-full bg-amber-500/30 px-0.5 py-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 sm:block lg:h-16 lg:w-16 dark:bg-zinc-800/90 dark:ring-white/10">
 			<Image src={avatarImage} alt="Avatar Image" className="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800" />
 		</div>
 	)

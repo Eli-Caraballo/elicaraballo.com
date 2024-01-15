@@ -6,7 +6,9 @@ import { useTheme } from 'next-themes'
 import { SunIcon, MoonIcon } from '@/components/Icons'
 
 import { Container } from '@/components/Container'
+import { usePathname } from 'next/navigation'
 import avatarImage from '@/images/avatar.jpg'
+import clsx from 'clsx'
 
 function ThemeToggle() {
 	let { resolvedTheme, setTheme } = useTheme()
@@ -25,20 +27,22 @@ function ThemeToggle() {
 	)
 }
 
-function Avatar() {
+function Avatar({ isHomePage }: { isHomePage?: boolean }) {
 	return (
-		<div className="h-12 w-12 rounded-full bg-amber-500/50 p-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 sm:hidden dark:bg-zinc-800/90 dark:ring-white/10">
+		<div className={clsx('h-12 w-12 rounded-full bg-amber-500/30 p-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 dark:bg-zinc-800/90 dark:ring-white/10', isHomePage ? 'sm:hidden' : '')}>
 			<Image src={avatarImage} alt="Avatar Image" className="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800" />
 		</div>
 	)
 }
 
 export function Header() {
+	let isHomePage = usePathname() === '/'
+
 	return (
 		<header className="mt-6 md:mt-10">
 			<Container>
-				<div className="flex justify-between items-center sm:justify-end">
-					<Avatar />
+				<div className={clsx('flex justify-between items-center', isHomePage ? 'sm:justify-end' : '')}>
+					<Avatar isHomePage={isHomePage} />
 					<ThemeToggle />
 				</div>
 			</Container>
