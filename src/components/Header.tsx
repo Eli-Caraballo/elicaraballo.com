@@ -1,14 +1,13 @@
 'use client'
 
+import clsx from 'clsx'
 import Image from 'next/image'
-
+import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { SunIcon, MoonIcon } from '@/components/Icons'
 
 import { Container } from '@/components/Container'
-import { usePathname } from 'next/navigation'
+import { MoonIcon, SunIcon } from '@/components/Icons'
 import avatarImage from '@/images/avatar.jpg'
-import clsx from 'clsx'
 
 function ThemeToggle() {
 	let { resolvedTheme, setTheme } = useTheme()
@@ -22,7 +21,7 @@ function ThemeToggle() {
 			onClick={() => setTheme(otherTheme)}
 		>
 			<SunIcon className="h-6 w-6 fill-amber-50 stroke-amber-500 transition group-hover:fill-yellow-100 group-hover:stroke-amber-600 dark:hidden" />
-			<MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 group-hover:stroke-zinc-400 transition dark:block" />
+			<MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition group-hover:stroke-zinc-400 dark:block" />
 		</button>
 	)
 }
@@ -41,7 +40,7 @@ export function Header() {
 	return (
 		<header className="mt-6 md:mt-10">
 			<Container>
-				<div className={clsx('flex justify-between items-center', isHomePage ? 'sm:justify-end' : '')}>
+				<div className={clsx('flex items-center justify-between', isHomePage ? 'sm:justify-end' : '')}>
 					<Avatar isHomePage={isHomePage} />
 					<ThemeToggle />
 				</div>

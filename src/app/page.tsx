@@ -1,15 +1,11 @@
+import clsx from 'clsx'
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { GitHubIcon, LinkedInIcon, MailIcon, BriefcaseIcon, ArrowDownIcon, ToolsIcon, LinkIcon } from '@/components/Icons'
-
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
+import { ArrowDownIcon, BriefcaseIcon, GitHubIcon, LinkedInIcon, LinkIcon, MailIcon, ToolsIcon } from '@/components/Icons'
+import avatarImage from '@/images/avatar.jpg'
 import logoCornerstone from '@/images/logos/Cornerstone.jpg'
 import logoCreativeArtsAcademy from '@/images/logos/CreativeArtsAcademy.jpg'
 import logoDish from '@/images/logos/DishOutdoors.svg'
@@ -20,13 +16,16 @@ import logoTelrite from '@/images/logos/Telrite.jpg'
 import logoTimelessEntertainment from '@/images/logos/TimelessEntertainment.png'
 import logoTimelessEntertainmentWhite from '@/images/logos/TimelessEntertainmentWhite.png'
 import logoTravlFi from '@/images/logos/TravlFi.svg'
-import clsx from 'clsx'
-import avatarImage from '@/images/avatar.jpg'
+import image1 from '@/images/photos/image-1.jpg'
+import image2 from '@/images/photos/image-2.jpg'
+import image3 from '@/images/photos/image-3.jpg'
+import image4 from '@/images/photos/image-4.jpg'
+import image5 from '@/images/photos/image-5.jpg'
 
 
 function SocialLink({ icon: Icon, ...props }: React.ComponentProps<typeof Link> & { icon: React.ComponentType<{ className?: string }> }) {
 	return (
-		<Link className="group -mx-1 -px-1 px-1 py-1" {...props}>
+		<Link className="group -mx-1 p-1" {...props}>
 			<Icon className="h-6 w-6 fill-amber-500 transition group-hover:fill-amber-600 dark:fill-zinc-300 dark:group-hover:fill-zinc-100" />
 		</Link>
 	)
@@ -37,7 +36,7 @@ function Photos() {
 		<div className="mt-16 sm:mt-20">
 			<div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
 				{[image1, image2, image3, image4, image5].map((image) => (
-					<div key={image.src} className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl transition-all duration-200 odd:rotate-2 even:-rotate-2 hover:odd:-rotate-2 hover:even:rotate-2 hover:scale-105">
+					<div key={image.src} className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 transition-all duration-200 odd:rotate-2 even:-rotate-2 hover:scale-105 hover:odd:-rotate-2 hover:even:rotate-2 sm:w-72 sm:rounded-2xl dark:bg-zinc-800">
 						<Image src={image} alt="" className="absolute inset-0 h-full w-full object-cover" />
 					</div>
 				))}
@@ -48,17 +47,17 @@ function Photos() {
 
 function EmailMe() {
 	return (
-		<form className="rounded-2xl px-6 py-6 border border-zinc-200/70 shadow shadow-zinc-800/5 dark:border-zinc-700/40">
+		<form className="rounded-2xl border border-zinc-200/70 p-6 shadow shadow-zinc-800/5 dark:border-zinc-700/40">
 			<h3 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
 				<MailIcon className="h-6 w-6 flex-none" />
 				<span className="ml-3">Get in touch</span>
 			</h3>
 
-			<p className="text-pretty mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+			<p className="mt-2 text-pretty text-sm text-zinc-600 dark:text-zinc-400">
 				Be sure to reach out and connect! Whether you have a question, collaboration idea, or just want to say hello, I'd love to hear from you.
 			</p>
 
-			<Button href="mailto:eli.caraballojr@gmail.com" className="mt-6 flex-none w-full">Shoot Me an Email</Button>
+			<Button href="mailto:eli.caraballojr@gmail.com" className="mt-6 w-full flex-none">Shoot Me an Email</Button>
 		</form>
 	)
 }
@@ -75,7 +74,7 @@ function Role({ role }: { role: Role }) {
 	return (
 		<li className="flex gap-x-4">
 			<div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-				<Image src={role.logo} alt="" className="rounded-full h-7 w-7" unoptimized />
+				<Image src={role.logo} alt="" className="h-7 w-7 rounded-full" unoptimized />
 			</div>
 
 			<dl className="flex flex-auto flex-wrap gap-x-2">
@@ -120,7 +119,7 @@ function Resume() {
 	}]
 
 	return (
-		<div className="rounded-2xl px-6 py-6 shadow shadow-zinc-800/5 border border-zinc-200/70 dark:border-zinc-700/40">
+		<div className="rounded-2xl border border-zinc-200/70 p-6 shadow shadow-zinc-800/5 dark:border-zinc-700/40">
 			<h3 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
 				<BriefcaseIcon className="h-6 w-6 flex-none" />
 				<span className="ml-3">Work</span>
@@ -179,15 +178,15 @@ function Projects() {
 				<span>Projects</span>
 			</h3>
 
-			<ul role="list" className="space-y-14 mt-12">
+			<ul role="list" className="mt-12 space-y-14">
 				{projects.map((project) => (
 					<li key={project.name} className="group relative flex flex-col items-start">
 						<Link href={project.link.href}>
-							<div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-100/50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl" />
+							<div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-100/50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50" />
 
 							<div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
 								<Image src={project.logo} alt="" className={clsx("h-8 w-8", project.darkLogo && 'dark:hidden')} unoptimized />
-								{project.darkLogo && (<Image src={project.darkLogo} alt="" className={clsx("h-8 w-8 hidden", project.darkLogo && 'dark:block')} unoptimized />)}
+								{project.darkLogo && (<Image src={project.darkLogo} alt="" className={clsx("hidden h-8 w-8", project.darkLogo && 'dark:block')} unoptimized />)}
 							</div>
 
 							<h3 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
@@ -210,7 +209,7 @@ function Projects() {
 
 function Avatar() {
 	return (
-		<div className="hidden h-14 w-14 rounded-full bg-amber-500/30 px-0.5 py-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 sm:block lg:h-16 lg:w-16 dark:bg-zinc-800/90 dark:ring-white/10">
+		<div className="hidden h-14 w-14 rounded-full bg-amber-500/30 p-0.5 shadow-lg shadow-zinc-800/10 ring-1 ring-zinc-900/5 sm:block lg:h-16 lg:w-16 dark:bg-zinc-800/90 dark:ring-white/10">
 			<Image src={avatarImage} alt="Avatar Image" className="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800" />
 		</div>
 	)
@@ -223,8 +222,8 @@ export default async function Home() {
 				<Avatar />
 
 				<div className="max-w-3xl sm:mt-7 lg:mt-8">
-					<h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl lg:text-6xl">Eliezer Caraballo Jr.</h1>
-					<h2 className="mt-1 font-light text-pretty tracking-tight italic text-zinc-600 sm:mt-0.5 sm:text-lg lg:text-xl dark:text-zinc-400">
+					<h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl lg:text-6xl dark:text-zinc-100">Eliezer Caraballo Jr.</h1>
+					<h2 className="mt-1 text-pretty font-light italic tracking-tight text-zinc-600 sm:mt-0.5 sm:text-lg lg:text-xl dark:text-zinc-400">
 						<span className="hidden sm:inline">- </span>
 						Software Developer, Musician, Gamer, Dad. That sums it up pretty well.
 					</h2>

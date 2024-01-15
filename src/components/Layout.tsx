@@ -6,11 +6,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 		<>
 			<div className="fixed inset-0 flex justify-center sm:px-8">
 				<div className="flex w-full max-w-7xl lg:px-8">
-					<div className="w-full shadow-lg bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
+					<div className="w-full bg-white shadow-lg ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
 				</div>
 			</div>
 
-			<div className="min-h-screen relative flex flex-col">
+			<div className="relative flex min-h-screen flex-col">
 				<Header />
 				<main className="grow basis-0">{children}</main>
 				<Footer />
