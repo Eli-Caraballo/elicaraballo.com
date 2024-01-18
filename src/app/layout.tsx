@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
+import { Analytics } from '@vercel/analytics/react' 
 
 export const metadata: Metadata = {
 	title: 'Eliezer Caraballo Jr. - Software Developer',
@@ -17,6 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<Providers>
 					<Layout>{children}</Layout>
 				</Providers>
+
+				<Analytics />
 			</body>
 		</html>
 	)
