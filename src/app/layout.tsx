@@ -1,10 +1,10 @@
 import '@/styles/tailwind.css'
 
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
-import { Analytics } from '@vercel/analytics/react' 
 
 export const metadata: Metadata = {
 	title: 'Eliezer Caraballo Jr. - Software Developer',

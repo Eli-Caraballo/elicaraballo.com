@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import { InnerContainer, OuterContainer } from '@/components/Container'
 
 export function Footer() {

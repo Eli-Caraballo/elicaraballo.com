@@ -12,7 +12,8 @@
 		"jsx-quotes": [
 			"error",
 			"prefer-double"
-		]
+		],
+		"simple-import-sort/imports": "error"
 	},
 	"plugins": [
 		"simple-import-sort"
