@@ -36,10 +36,7 @@ function Photos() {
 		<div className="mt-16 sm:mt-20">
 			<div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
 				{[image1, image2, image3, image4, image5].map((image, index) => (
-					<div key={image.src} className={clsx(
-						"relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 transition-all duration-200 odd:rotate-2 even:-rotate-2 hover:scale-105 hover:odd:-rotate-2 hover:even:rotate-2 sm:w-72 sm:rounded-2xl dark:bg-zinc-800",
-						index === 4 && '-order-1 lg:order-none'
-					)}>
+					<div key={image.src} className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 transition-all duration-200 last:-order-1 odd:rotate-2 even:-rotate-2 hover:scale-105 hover:odd:-rotate-2 hover:even:rotate-2 sm:w-72 sm:rounded-2xl last:lg:order-none dark:bg-zinc-800">
 						<Image src={image} alt="" className="absolute inset-0 h-full w-full object-cover" />
 					</div>
 				))}
