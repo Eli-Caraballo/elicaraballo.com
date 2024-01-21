@@ -35,8 +35,11 @@ function Photos() {
 	return (
 		<div className="mt-16 sm:mt-20">
 			<div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-				{[image1, image2, image3, image4, image5].map((image) => (
-					<div key={image.src} className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 transition-all duration-200 odd:rotate-2 even:-rotate-2 hover:scale-105 hover:odd:-rotate-2 hover:even:rotate-2 sm:w-72 sm:rounded-2xl dark:bg-zinc-800">
+				{[image1, image2, image3, image4, image5].map((image, index) => (
+					<div key={image.src} className={clsx(
+						"relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 transition-all duration-200 odd:rotate-2 even:-rotate-2 hover:scale-105 hover:odd:-rotate-2 hover:even:rotate-2 sm:w-72 sm:rounded-2xl dark:bg-zinc-800",
+						index === 4 && '-order-1 lg:order-none'
+					)}>
 						<Image src={image} alt="" className="absolute inset-0 h-full w-full object-cover" />
 					</div>
 				))}
@@ -225,7 +228,8 @@ export default async function Home() {
 					<h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl lg:text-6xl dark:text-zinc-100">Eliezer Caraballo Jr.</h1>
 					<h2 className="mt-1 text-pretty font-light italic tracking-tight text-zinc-600 sm:mt-0.5 sm:text-lg lg:text-xl dark:text-zinc-400">
 						<span className="hidden sm:inline">- </span>
-						Software Developer, Musician, Gamer, Dad. That sums it up pretty well.
+						Software Developer, Musician, Gamer, Dad.
+						<span className="hidden sm:inline"> That sums it up pretty well.</span>
 					</h2>
 
 					<p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
