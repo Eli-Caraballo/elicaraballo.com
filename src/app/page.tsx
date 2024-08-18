@@ -12,6 +12,7 @@ import logoDish from '@/images/logos/DishOutdoors.svg'
 import logoPace from '@/images/logos/Pace.jpg'
 import logoPacePng from '@/images/logos/Pace.png'
 import logoPacePngWhite from '@/images/logos/PaceWhite.png'
+import logoRenewedVision from '@/images/logos/RenewedVision.jpg'
 import logoTelrite from '@/images/logos/Telrite.jpg'
 import logoTimelessEntertainment from '@/images/logos/TimelessEntertainment.png'
 import logoTimelessEntertainmentWhite from '@/images/logos/TimelessEntertainmentWhite.png'
@@ -93,11 +94,17 @@ function Role({ role }: { role: Role }) {
 
 function Resume() {
 	const resume = [{
+		company: 'Renewed Vision',
+		title: 'Web Developer III',
+		logo: logoRenewedVision,
+		start: '2024',
+		end: 'Present',
+	},{
 		company: 'Pace International',
 		title: 'Full Stack Developer',
 		logo: logoPace,
 		start: '2020',
-		end: 'Present',
+		end: '2024',
 	}, {
 		company: 'Telrite Holdings',
 		title: 'Frontend Developer',
